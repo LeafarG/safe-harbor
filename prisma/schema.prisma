@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String   @default("demo123")
+  name      String
+  role      String   // "therapist" | "educator" | "parent"
+  createdAt DateTime @default(now())
+  sessions  Session[]
+  patientAccess PatientAccess[]
+}
+
+model PatientAccess {
+  id          String   @id @default(uuid())
+  userId      String
+  patientId   String
+  accessLevel String   // "full" | "partial" | "limited"
+  
+  user        User     @relation(fields: [userId], references: [id])
+  patient     Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, patientId])
+}
+
+model Patient {
+  id            String          @id @default(uuid())
+  name          String
+  dateOfBirth   DateTime?
+  notes         String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  sessions      Session[]
+  iepGenerations IepGeneration[]
+  access        PatientAccess[]
+  questionnaires Questionnaire[]
+}
+
+model Session {
+  id            String   @id @default(uuid())
+  patientId     String
+  patient       Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  therapistId   String
+  therapist     User     @relation(fields: [therapistId], references: [id])
+  sessionDate   DateTime
+  startTime     String?
+  endTime       String?
+  location      String?
+  participants  String?
+  materials     String?
+  notes         String?
+  isPrivate     Boolean  @default(false)  // Private notes - only author can see
+  createdAt     DateTime @default(now())
+}
+
+model IepGeneration {
+  id             String   @id @default(uuid())
+  patientId      String
+  patient        Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  inputData      String
+  generatedGoals String
+  createdAt      DateTime @default(now())
+}
+
+model Questionnaire {
+  id        String   @id @default(uuid())
+  patientId String
+  patient   Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  createdBy String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  responses QuestionnaireResponse[]
+}
+
+model QuestionnaireResponse {
+  id              String        @id @default(uuid())
+  questionnaireId String
+  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id], onDelete: Cascade)
+  dimension       String
+  questionIndex   Int
+  ageTier         String
+  score           Int
+  notes           String?
+}

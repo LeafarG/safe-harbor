@@ -1,0 +1,85 @@
+
+> individual-profile@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.21.144.1:3000
+- Environments: .env
+✓ Ready in 324ms
+
+⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from "172.21.144.1".
+Cross-origin access to Next.js dev resources is blocked by default for safety.
+
+To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
+
+// next.config.js
+module.exports = {
+  allowedDevOrigins: ['172.21.144.1'],
+}
+
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / 200 in 256ms (next.js: 130ms, application-code: 127ms)
+ POST /api/auth/login 200 in 80ms (next.js: 59ms, application-code: 21ms)
+ GET / 200 in 76ms (next.js: 34ms, application-code: 42ms)
+ GET / 200 in 24ms (next.js: 2ms, application-code: 22ms)
+ GET / 200 in 23ms (next.js: 3ms, application-code: 20ms)
+ GET / 200 in 26ms (next.js: 1914µs, application-code: 24ms)
+ GET / 200 in 24ms (next.js: 2ms, application-code: 22ms)
+ GET / 200 in 24ms (next.js: 1798µs, application-code: 23ms)
+ GET / 200 in 24ms (next.js: 2ms, application-code: 22ms)
+ GET / 200 in 23ms (next.js: 2ms, application-code: 21ms)
+ GET / 200 in 25ms (next.js: 1829µs, application-code: 23ms)
+ GET / 200 in 24ms (next.js: 2ms, application-code: 22ms)
+ GET / 200 in 23ms (next.js: 1844µs, application-code: 21ms)
+ GET / 200 in 22ms (next.js: 1845µs, application-code: 20ms)
+ GET / 200 in 24ms (next.js: 2ms, application-code: 21ms)
+ GET / 200 in 22ms (next.js: 1890µs, application-code: 20ms)
+ GET / 200 in 23ms (next.js: 1790µs, application-code: 21ms)
+ GET / 200 in 21ms (next.js: 2ms, application-code: 19ms)
+ GET / 200 in 26ms (next.js: 1596µs, application-code: 24ms)
+ GET / 200 in 20ms (next.js: 2ms, application-code: 18ms)
+ GET / 200 in 21ms (next.js: 3ms, application-code: 19ms)
+ GET / 200 in 19ms (next.js: 1791µs, application-code: 17ms)
+ GET / 200 in 20ms (next.js: 1961µs, application-code: 18ms)
+ GET / 200 in 21ms (next.js: 1746µs, application-code: 19ms)
+ GET / 200 in 20ms (next.js: 1678µs, application-code: 18ms)
+ GET / 200 in 24ms (next.js: 1850µs, application-code: 22ms)
+ GET / 200 in 20ms (next.js: 1571µs, application-code: 18ms)
+ GET / 200 in 23ms (next.js: 1721µs, application-code: 21ms)
+ GET / 200 in 25ms (next.js: 2ms, application-code: 23ms)
+ GET / 200 in 19ms (next.js: 1583µs, application-code: 18ms)
+ GET / 200 in 19ms (next.js: 1645µs, application-code: 17ms)
+ GET / 200 in 18ms (next.js: 1614µs, application-code: 16ms)
+ GET / 200 in 24ms (next.js: 1951µs, application-code: 22ms)
+ GET / 200 in 26ms (next.js: 2ms, application-code: 24ms)
+ GET / 200 in 20ms (next.js: 2ms, application-code: 18ms)
+ GET / 200 in 18ms (next.js: 1685µs, application-code: 16ms)
+ GET / 200 in 19ms (next.js: 1613µs, application-code: 18ms)
+ GET / 200 in 21ms (next.js: 1719µs, application-code: 19ms)
+ GET / 200 in 20ms (next.js: 1740µs, application-code: 18ms)
+ GET / 200 in 22ms (next.js: 1540µs, application-code: 21ms)
+ GET / 200 in 27ms (next.js: 1873µs, application-code: 25ms)
+ GET / 200 in 20ms (next.js: 1758µs, application-code: 18ms)
+ GET / 200 in 28ms (next.js: 2ms, application-code: 26ms)
+ GET / 200 in 22ms (next.js: 1587µs, application-code: 21ms)
+ GET / 200 in 24ms (next.js: 1902µs, application-code: 22ms)
+ GET / 200 in 20ms (next.js: 1725µs, application-code: 18ms)
+ GET / 200 in 29ms (next.js: 3ms, application-code: 27ms)
+ GET / 200 in 22ms (next.js: 1569µs, application-code: 20ms)
+ GET / 200 in 21ms (next.js: 2ms, application-code: 19ms)
+ GET / 200 in 23ms (next.js: 1635µs, application-code: 21ms)
+ GET / 200 in 23ms (next.js: 2ms, application-code: 21ms)
+ GET / 200 in 18ms (next.js: 1670µs, application-code: 17ms)
+ GET / 200 in 22ms (next.js: 1606µs, application-code: 20ms)
+ GET / 200 in 22ms (next.js: 1623µs, application-code: 21ms)
+ GET / 200 in 21ms (next.js: 2ms, application-code: 18ms)
+ GET / 200 in 21ms (next.js: 1613µs, application-code: 19ms)
+ GET / 200 in 19ms (next.js: 1727µs, application-code: 18ms)
+ GET / 200 in 22ms (next.js: 1838µs, application-code: 20ms)
+ GET / 200 in 20ms (next.js: 1961µs, application-code: 18ms)
+ GET / 200 in 26ms (next.js: 2ms, application-code: 23ms)
+ GET / 200 in 20ms (next.js: 1593µs, application-code: 19ms)
+ GET / 200 in 20ms (next.js: 1849µs, application-code: 18ms)
+ GET / 200 in 19ms (next.js: 1821µs, application-code: 17ms)
+ GET / 200 in 19ms (next.js: 1571µs, application-code: 17ms)
