@@ -8,7 +8,7 @@ import { PatientsAPI, SessionsAPI } from '@/lib/services/api';
 import { Card, StatCard, ActionCard, EmptyState, PageHeader } from '@/components/ui';
 import {
   Users, Calendar, Brain, ArrowRight, Activity, TrendingUp, Clock, FileCheck,
-  Shield, Sparkles, LineChart, Lock, MessageSquare, FileText, Heart,
+  Shield, Sparkles, LineChart, Lock, MessageSquare, FileText, Heart, Mail, KeyRound,
 } from 'lucide-react';
 import type { Patient, Session } from '@/types';
 
@@ -45,6 +45,18 @@ export default function HomePage() {
       });
     }
   }, [user]);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setLoginError('');
+    const result = await login(email, password);
+    if (!result) setLoginError(t.login.loginError);
+    setLoading(false);
+  };
 
   const handleQuickLogin = async (demoUser: (typeof demoUsers)[0]) => {
     setLoading(true);
@@ -114,25 +126,43 @@ export default function HomePage() {
                 <p className="text-gray-500 mt-1">{t.login.subtitle}</p>
               </div>
 
-              <div className="space-y-3 mb-6">
-                {demoUsers.map((demoUser) => (
-                  <button
-                    key={demoUser.email}
-                    onClick={() => handleQuickLogin(demoUser)}
-                    disabled={loading}
-                    className={`w-full text-white font-semibold py-3.5 px-5 rounded-xl transition-all flex items-center gap-4 shadow-lg disabled:opacity-50 ${demoUser.color}`}
-                  >
-                    <span className="text-2xl">{demoUser.icon}</span>
-                    <div className="text-left">
-                      <p className="text-sm font-bold">{demoUser.name}</p>
-                      <p className="text-xs opacity-80">
-                        {t.roleDescriptions[demoUser.role]}
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 ml-auto opacity-70" />
-                  </button>
-                ))}
-              </div>
+              <form onSubmit={handleLogin} className="space-y-4 mb-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      required
+                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                  <div className="relative">
+                    <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="••••••••"
+                      required
+                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 rounded-xl transition-all shadow-lg disabled:opacity-50"
+                >
+                  {loading ? 'Signing in…' : 'Sign In'}
+                </button>
+              </form>
 
               {loginError && (
                 <div className="bg-red-50 text-red-700 p-3 rounded-lg text-sm mb-4">
@@ -140,12 +170,27 @@ export default function HomePage() {
                 </div>
               )}
 
-              <div className="text-center space-y-3">
-                <p className="text-xs text-gray-400">
-                  {t.login.selectProfile}
-                  <br />
-                  {t.login.password}: <span className="font-mono font-medium text-gray-600">demo123</span>
-                </p>
+              <div className="border-t border-slate-100 pt-4">
+                <p className="text-xs font-medium text-gray-500 text-center mb-3">Quick Demo Login</p>
+                <div className="space-y-2">
+                  {demoUsers.map((demoUser) => (
+                    <button
+                      key={demoUser.email}
+                      onClick={() => handleQuickLogin(demoUser)}
+                      disabled={loading}
+                      className={`w-full text-white font-medium py-2.5 px-4 rounded-lg transition-all flex items-center gap-3 shadow disabled:opacity-50 text-sm ${demoUser.color}`}
+                    >
+                      <span className="text-lg">{demoUser.icon}</span>
+                      <div className="text-left">
+                        <p className="text-xs font-bold">{demoUser.name}</p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 ml-auto opacity-70" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="text-center mt-4">
                 <button
                   onClick={() => { localStorage.clear(); window.location.reload(); }}
                   className="text-xs text-gray-400 hover:text-red-500 underline"

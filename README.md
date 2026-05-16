@@ -16,7 +16,9 @@ Safe Harbor is a clinical-grade EdTech platform that helps BCBAs, educators, and
 
 **Live URL:** [https://safe-harbor-demo.vercel.app](https://safe-harbor-demo.vercel.app) *(deploy yours below)*
 
-### One-Click Demo Login
+### Demo Credentials
+
+Sign in with any of the accounts below, or click the **Quick Demo Login** buttons on the login page.
 
 | Profile | Email | Password | Access |
 |---------|-------|----------|--------|
